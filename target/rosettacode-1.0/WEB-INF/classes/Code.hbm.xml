@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="model.Code" table="codes">
+    <id column="id" name="id" type="java.lang.Integer">
+      <generator class="native"/>
+    </id>
+    <property column="description" name="description"/>
+    <property column="output" name="output"/>
+    <property column="level" name="level"/>
+    <property column="type" name="type"/>
+    <property column="credit" name="credit"/>
+    <property column="added_date" name="added_date"/>
+    <set cascade="all" inverse="true" name="challenges" table="challenges">
+      <key>
+        <column name="code_id" not-null="true"/>
+      </key>
+      <one-to-many class="model.Challenge"/>
+    </set>
+    <set cascade="all" inverse="true" name="lessoncodes" table="lesson_code">
+      <key>
+        <column name="code_id" not-null="true"/>
+      </key>
+      <one-to-many class="model.LessonCode"/>
+    </set>
+  </class>
+</hibernate-mapping>

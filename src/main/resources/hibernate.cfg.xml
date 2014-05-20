@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!-- Setting for a local HSQL database -->
+    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql://127.2.172.2:3306/rosettacode?characterEncoding=UTF8</property>
+    <property name="connection.username">admin8Uz9UdV</property>
+    <property name="connection.password">4fFCX3mBSQpg</property>
+    
+    <!-- configuration pool via c3p0-->   
+    <property name="c3p0.acquire_increment">1</property>   
+    <property name="c3p0.idle_test_period">3000</property> <!-- seconds -->   
+    <property name="c3p0.max_size">100</property>   
+    <property name="c3p0.max_statements">50</property>   
+    <property name="c3p0.min_size">10</property>   
+    <property name="c3p0.timeout">300</property> <!-- seconds -->
+    <property name="c3p0.testConnectionOnCheckout">true</property>
+    
+    <!-- Print SQL to stdout -->
+    <property name="show_sql">false</property>
+    <property name="format_sql">false</property>
+    <mapping resource="User.hbm.xml"/>
+    <mapping resource="Activity.hbm.xml"/>
+    <mapping resource="Lesson.hbm.xml"/>
+    <mapping resource="Code.hbm.xml"/>
+    <mapping resource="Challenge.hbm.xml"/>
+    <mapping resource="LessonCode.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

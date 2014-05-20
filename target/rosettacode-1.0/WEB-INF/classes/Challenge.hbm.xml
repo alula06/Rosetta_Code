@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="model.Challenge" table="challenges">
+    <id column="id" name="id" type="java.lang.Integer">
+      <generator class="native"/>
+    </id>
+    <property column="added_date" name="added_date"/>
+    <property column="offense_begin_time" name="offense_begin_time"/>
+    <property column="offense_end_time" name="offense_end_time"/>
+    <property column="offense_attempt" name="offense_attempt"/>
+    <property column="offense_closed" name="offense_closed"/>
+    <property column="defense_begin_time" name="defense_begin_time"/>
+    <property column="defense_end_time" name="defense_end_time"/>
+    <property column="defense_attempt" name="defense_attempt"/>
+    <property column="defense_closed" name="defense_closed"/>
+    <many-to-one class="model.User" fetch="select" name="offense">
+      <column name="offense_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.User" fetch="select" name="defense">
+      <column name="defense_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.User" fetch="select" name="winner">
+      <column name="winner_id" not-null="false"/>
+    </many-to-one>
+    <many-to-one class="model.Code" fetch="select" name="code">
+      <column name="code_id" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

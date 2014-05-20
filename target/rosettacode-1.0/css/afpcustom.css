@@ -1,0 +1,90 @@
+.container-fixed{
+    width: 1330px;
+    margin:auto;
+    top: 0;
+}
+
+#challenger-photo{
+    padding-top : 25px; 
+}
+
+#challenger-info{
+    padding-bottom: 10px; 
+}
+
+
+#challenger
+{
+    background-color: whitesmoke;
+    color: #002B36;
+    padding-top: 20px;  
+    padding-right: 15px;
+    border-right: 1px solid;
+    border-right-color: black;
+    height: 540px;
+}
+
+#challenger-top{
+    padding-bottom: 50px;
+}
+
+#console{
+    border-right: 1px solid;
+    border-right-color: black;
+    height: 540px; 
+    background-color:#141414;
+    border-bottom: 1px;
+    border-bottom-color: black;
+    overflow-x: hidden;
+}
+
+#prompt{
+    background-color: whitesmoke;
+    color: #002B36;
+    min-height: 540px; 
+    max-height: 540px; 
+    overflow: scroll;
+    overflow-x: hidden;
+    border-bottom: 1px;
+    border-bottom-color: black;
+}
+
+#footer{
+    padding-top: 12px;
+    color:#FF9A40;
+    text-align: center;
+}
+
+.challenger-info{
+    padding-top: 20px;
+}
+.label-mid-top{
+    background-color: dimgray;
+    color:white;
+    padding-left: 5px;
+}
+
+.label-mid{
+    background-color: dimgray;
+    color:white;
+    padding-left: 5px;
+}
+.label-right{
+    background-color: dimgray;
+    color:white;
+    padding-left: 5px;
+}
+.output
+{
+    color:white;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.run-button{
+    position: absolute;
+    right:    0;
+    bottom:   0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}

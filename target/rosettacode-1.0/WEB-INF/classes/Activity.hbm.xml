@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="model.Activity" table="lesson_activities">
+    <id column="id" name="id" type="java.lang.Integer">
+      <generator class="native"/>
+    </id>
+    <property column="progress" name="progress"/>
+    <property column="total" name="total"/>
+    <property column="begin_date" name="begin_date"/>
+    <property column="end_date" name="end_date"/>
+    <property column="score" name="score"/>
+    <many-to-one class="model.User" fetch="select" name="user">
+      <column name="user_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.Lesson" name="lesson">
+      <column name="lesson_id" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

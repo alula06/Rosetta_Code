@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <constant name="struts.action.extension" value="do" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
+    
+    <package name="api" namespace="/api" extends="json-default">
+
+        <interceptors>
+            <interceptor name="sessionInterceptor" class="api.others.SessionInterceptor" />
+            <interceptor-stack name="SessionCheckStack">
+                <interceptor-ref name="sessionInterceptor" />
+                <interceptor-ref name="json" />
+            </interceptor-stack>
+        </interceptors>
+        
+        <!--
+        <default-interceptor-ref name="SessionCheckStack" />
+
+        <global-results>
+            <result name="SESSION_EXPIRED">/index.html</result>
+        </global-results>
+        -->
+        
+        
+        <action name="Login" class="api.AuthorizationAction" method="login">
+            <interceptor-ref name="json" />
+            <result type="json" />
+        </action>
+        <action name="Logout" class="api.AuthorizationAction" method="logout">
+            <interceptor-ref name="json" />
+            <result type="json" />
+        </action>
+        <action name="Register" class="api.RegisterAction" method="execute">
+            <interceptor-ref name="json" />
+            <result type="json" />
+        </action>
+        <action name="Update" class="api.RegisterAction" method="update">
+            <interceptor-ref name="json" />
+            <result type="json" />
+        </action>
+        <action name="Profile" class="api.ProfileAction" method="execute">
+            <interceptor-ref name="SessionCheckStack" />
+            <result type="json" />
+        </action>
+        
+        
+        <action name="ActivityList" class="api.ActivityAction" method="listActivity">
+            <interceptor-ref name="SessionCheckStack" />
+            <result type="json">
+                <param name="excludeProperties">
+                    activity_id, lesson_id, exercises
+                    activities\[\d+\]\.lesson\[\d+\]\.exercise_ids
+                </param>
+            </result>
+        </action>
+        
+        <action name="ActivityGet" class="api.ActivityAction" method="retrieveActivity">
+            <interceptor-ref name="SessionCheckStack" />
+            <result type="json">
+                <param name="excludeProperties">
+                    lesson_id
+                </param>
+            </result>
+        </action>
+        
+        
+        <action name="PlayerList" class="api.PlayerListAction" method="execute">
+            <interceptor-ref name="SessionCheckStack" />
+            <result type="json" />
+        </action>
+        
+        <action name="ChallengeList" class="api.ChallengeAction" method="list">
+            <interceptor-ref name="SessionCheckStack" />
+            <result type="json">
+                <param name="excludeProperties">
+                    challengeinfo,challenge
+                </param>
+            </result>
+        </action>
+        
+        <action name="ChallengeCreate" class="api.ChallengeAction" method="create">
+            <interceptor-ref name="SessionCheckStack" />
+            <result type="json">
+                <param name="excludeProperties">
+                    challengeinfo,challenges
+                </param>
+            </result>
+        </action>
+        
+        <action name="ChallengeStart" class="api.ChallengeAction" method="start">
+            <interceptor-ref name="SessionCheckStack" />
+            <result type="json">
+                <param name="excludeProperties">
+                    challenges
+                </param>
+            </result>
+        </action>
+        
+        
+        <action name="ChallengeCode" class="api.ChallengeCodeAction" method="execute">
+            <interceptor-ref name="SessionCheckStack" />
+            <result type="json" />
+        </action>
+        
+        <action name="ExerciseCode" class="api.ExerciseCodeAction" method="execute">
+            <interceptor-ref name="SessionCheckStack" />
+            <result type="json" />
+        </action>
+        
+        
+    </package>
+    
+</struts>
