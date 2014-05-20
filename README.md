@@ -1,3 +1,3 @@
-The OpenShift `jbossews` cartridge documentation can be found at:
+# SF DATE
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#tomcat
+Rosetta Code is a web application to teach beginning programmers the fundamentals of languages they wish to learn (Eg Java, C++). Rosetta Code is hosted in the cloud through OpenShift and uses JSP to display it's webpages.
